@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: Georota API
+  description: API para gerenciamento de locais e rotas. Spring Boot.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /mapa/adicionar:
+    post:
+      summary: Adicionar um novo local
+      parameters:
+        - in: query
+          name: nomePonto
+          schema:
+            type: string
+          required: true
+          description: Nome do ponto
+        - in: query
+          name: logradouro
+          schema:
+            type: string
+          required: true
+          description: Logradouro do ponto
+      responses:
+        '200':
+          description: Local adicionado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensagem:
+                    type: string
+                  Local:
+                    type: string
+                  Rua:
+                    type: string
+  /mapa/buscar-local:
+    get:
+      summary: Buscar um local na árvore binária
+      parameters:
+        - in: query
+          name: nomePonto
+          schema:
+            type: string
+          required: true
+          description: Nome do ponto
+      responses:
+        '200':
+          description: Local encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nomePonto:
+                    type: string
+                  logradouro:
+                    type: string
+        '404':
+          description: Local não encontrado
+  /mapa/conectar-elos:
+    post:
+      summary: Conectar dois pontos
+      parameters:
+        - in: query
+          name: nomeOrigem
+          schema:
+            type: string
+          required: true
+          description: Nome do ponto de origem
+        - in: query
+          name: nomeDestino
+          schema:
+            type: string
+          required: true
+          description: Nome do ponto de destino
+      responses:
+        '200':
+          description: Pontos conectados com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensagem:
+                    type: string
+        '400':
+          description: Erro ao conectar pontos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  erro:
+                    type: string
+  /mapa/conexoes:
+    get:
+      summary: Obter todas as conexões
+      responses:
+        '200':
+          description: Lista de conexões
+          content:
+            application/json:
+              schema:
+                type: string
+  /mapa/melhor-rota:
+    get:
+      summary: Obter a melhor rota entre dois pontos
+      parameters:
+        - in: query
+          name: nomeOrigem
+          schema:
+            type: string
+          required: true
+          description: Nome do ponto de origem
+        - in: query
+          name: nomeDestino
+          schema:
+            type: string
+          required: true
+          description: Nome do ponto de destino
+        - in: query
+          name: modo
+          schema:
+            type: string
+          required: true
+          description: Modo de transporte
+      responses:
+        '200':
+          description: Melhor rota encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Erro ao obter a rota
+          content:
+            application/json:
+              schema:
+                type: string

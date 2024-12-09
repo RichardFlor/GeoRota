@@ -1,0 +1,24 @@
+.full-height{
+    background-color: black;
+    height: 100vh;
+}
+
+.height-available{
+    height: -webkit-fill-available;
+}
+
+.height-100{
+    height: 100%;
+}
+
+#bestRouteResult {
+    max-height: 520px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+.box{
+    background-color: #fff;
+    border-radius: 1rem;
+    border: 1px solid #8d99ae;
+    padding: 1rem;
+}
