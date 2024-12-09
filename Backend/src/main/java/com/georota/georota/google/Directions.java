@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Directions {
     private static final String MAPS_KEY = System.getenv("GOOGLE_MAPS_KEY");
+    //private static final String MAPS_KEY = "bota a chave aqui comenta o de cima ";
 
     public static String melhorRota(String origem, String destino, String modo) {
         try {

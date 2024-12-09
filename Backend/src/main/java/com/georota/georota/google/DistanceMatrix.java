@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 
 public class DistanceMatrix {
     private static final String MAPS_KEY = System.getenv("GOOGLE_MAPS_KEY");
+    //private static final String MAPS_KEY = "bota a chave aqui comenta o de cima ";
 
     /**
      * Obtém a distância entre dois locais.
